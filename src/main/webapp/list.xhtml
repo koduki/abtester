@@ -1,0 +1,42 @@
+<ui:composition template="/resources/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    <ui:define name="content">
+        <b:navbar>
+            <h1>AB-Tester</h1>
+        </b:navbar>
+        <b:gridContainer>
+            <b:gridRow styleClass="show-grid">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:dataTable value="#{flavorBean.flavors}" class="table table-striped" var="item" >
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Scripts"/>
+                            </f:facet>
+                            <h:outputText value="#{item.scritps}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:commandLink immediate="true" action="#{flavorBean.prepareShow(item.id)}" value="edit"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                <h:link outcome="#{flavorBean.prepareCreate()}" value="new"/>
+            </b:gridRow>
+        </b:gridContainer>
+    </ui:define>
+</ui:composition>

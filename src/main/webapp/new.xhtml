@@ -1,0 +1,20 @@
+<ui:composition template="/resources/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    <ui:define name="content">
+        <b:navbar>
+            <h1>AB-Tester</h1>
+        </b:navbar>
+        <b:gridContainer>
+            <h3 class="brand">Flavor Create</h3>
+            <h:form id="frm_update">
+                <h:outputLabel value="FlavorName" for="name" />
+                <h:inputText id="name" value="#{flavorBean.current.name}"/>
+                <h:commandButton action="#{flavorBean.create()}" value="Create"/>
+                <span> | </span>
+                <h:link outcome="#{flavorBean.prepareList()}" value="List"/>
+            </h:form>
+        </b:gridContainer>
+        <h:outputScript target="body" library="js" name="flavor.js.js" />
+    </ui:define>
+</ui:composition>

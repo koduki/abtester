@@ -1,0 +1,58 @@
+<ui:composition template="/resources/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    <ui:define name="content">
+        <b:navbar>
+            <h1>AB-Tester</h1>
+        </b:navbar>
+        <b:gridContainer>
+            <b:gridRow styleClass="show-grid">
+                <b:gridRow styleClass="show-grid">
+                    <b:gridColumn span="7" offset="1">
+                        <div id="editor-block">
+                            <ui:include src="/sample.html" />
+                        </div>
+                    </b:gridColumn>
+                    <b:gridColumn span="4">
+                        <div id="properties-block" class="well sidebar-nav">
+                            <h3 class="brand">Properties</h3>
+                            <div class="control-group" id="flavor-name">
+                                <label class="control-label">Name:</label>
+                                <div class="controls">
+                                    <span class="value"></span>
+                                </div>
+                            </div>
+                            <div class="control-group" id="flavor-value">
+                                <label class="control-label">Text:</label>
+                                <div class="controls">
+                                    <input type="text" class="value" placeholder="Text Input" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button id="apply" class="btn">apply</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="flavor-block" class="well sidebar-nav">
+                            <h3 class="brand">Flavor Settings</h3>
+                            <h:form id="frm_update">
+                                <h:form id="frm_update">
+                                    <h:outputLabel value="FlavorName" for="name" />
+                                    <h:inputText id="name" value="#{flavorBean.current.name}"/>
+                                    <h:inputText id="id" value="#{flavorBean.current.id}" />
+                                    <h:inputText id="scritps" value="#{flavorBean.current.scritps}"  />
+                                    <h:commandButton action="#{flavorBean.update()}" value="Update"/>
+                                    <span> | </span>
+                                    <h:link outcome="#{flavorBean.prepareList()}" value="List"/>
+                                </h:form>
+                            </h:form>
+                        </div>
+                    </b:gridColumn>
+                </b:gridRow>
+            </b:gridRow>
+        </b:gridContainer>
+        
+        <h:outputScript target="body" library="js" name="flavor.js.js" />
+    </ui:define>
+</ui:composition>

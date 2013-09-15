@@ -1,0 +1,13 @@
+<ui:composition template="/resources/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    <ui:define name="content">
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <ui:include src="/sample.html" />
+        <input type="hidden" id="script-data" value="#{flavorBean.scripts}" />
+        <script lang="javascript">
+            // apply flavor html.
+            eval($(document.getElementById("script-data")).val());
+        </script>
+    </ui:define>
+</ui:composition>
